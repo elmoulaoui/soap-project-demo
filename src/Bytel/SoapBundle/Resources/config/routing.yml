@@ -1,0 +1,3 @@
+bytel_soap_homepage:
+    pattern:  /weather
+    defaults: { _controller: BytelSoapBundle:Default:index }

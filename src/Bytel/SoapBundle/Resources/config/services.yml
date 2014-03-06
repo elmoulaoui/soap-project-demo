@@ -1,0 +1,21 @@
+parameters:
+
+    bytel_soap_amazon_params:
+      soapClient:
+        wsdl: http://soap.amazon.com/schemas2/AmazonWebServices.wsdl
+        options: []
+        
+    bytel_soap_weather_params:
+      soapClient:
+        wsdl: http://wsf.cdyne.com/WeatherWS/Weather.asmx?WSDL
+        options: []
+
+services:
+
+    bytel_soap_amazon:
+      class: Bytel\SoapBundle\Services\Amazon
+      arguments: [%bytel_soap_amazon_params%]
+   
+    bytel_soap_weather:
+      class: Bytel\SoapBundle\Services\Weather
+      arguments: [%bytel_soap_weather_params%]

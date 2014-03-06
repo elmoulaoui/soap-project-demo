@@ -1,0 +1,4 @@
+bytel_soap:
+    resource: "@BytelSoapBundle/Resources/config/routing.yml"
+    prefix:   /
+
