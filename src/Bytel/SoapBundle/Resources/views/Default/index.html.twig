@@ -1,0 +1,12 @@
+
+<ul>
+  {% for weather in informations %}
+    <li>
+        <label>{{ weather.Description }}</label>
+        <img src="{{weather.PictureURL}}"/>
+    </li>
+
+{% endfor %}
+</ul>
+
+
