@@ -6,6 +6,7 @@
 
 {% block head %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/bytelsoap/css/profiler.min.css') }}" />
 {% endblock %}
 
 {% block menu %}
@@ -19,5 +20,10 @@
 {% endblock %}
 
 {% block panel %}
-    {# le contenu du « panel » #}
+    {% for index,call in collector.data %}
+        {% include 'BytelSoapBundle:Collector:call.html.twig' with { 'call': call, 'index': index } %}
+    {% endfor %}
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 {% endblock %}

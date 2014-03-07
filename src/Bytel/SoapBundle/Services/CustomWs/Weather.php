@@ -12,7 +12,7 @@ class Weather extends Soap {
         try {
             $response = $this->getSoapClient()->GetWeatherInformation($params);
             
-            $event = new SoapEvent($this->getSoapClient()->getLastRequest(), $this->getSoapClient()->getLastResponse());
+            $event = new SoapEvent($this->getSoapClient()->getLastRequest(), $this->getSoapClient()->getLastResponse(), $this->getSoapClient()->getLastMethod());
             
             //die(var_dump($this->getEventDispatcher()));
             

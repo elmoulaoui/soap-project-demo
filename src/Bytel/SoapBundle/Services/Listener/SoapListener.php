@@ -15,7 +15,7 @@ class SoapListener
 
     public function onRequestSent(SoapEvent $event)
     {
-        $this->add($event->getRequest(), $event->getResponse());
+        $this->add($event->getRequest(), $event->getResponse(), $event->getMethod());
     }
 
     /**
@@ -23,12 +23,14 @@ class SoapListener
      *
      * @param string $request
      * @param string $response
+     * @param string $method
      */
-    public function add($request, $response = null)
+    public function add($request, $response, $method)
     {
         $this->calls[] = array(
-            'request' => $request,
-            'response' => $response
+            'request'  => $request,
+            'response' => $response,
+            'method'   => $method
         );
     }
     
