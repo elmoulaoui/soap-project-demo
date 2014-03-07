@@ -13,9 +13,9 @@ parameters:
 services:
 
     bytel_soap_amazon:
-      class: Bytel\SoapBundle\Services\Amazon
-      arguments: [%bytel_soap_amazon_params%]
-   
+      class: Bytel\SoapBundle\Services\CustomWs\Amazon
+      arguments: [%bytel_soap_amazon_params%, @event_dispatcher]
+
     bytel_soap_weather:
-      class: Bytel\SoapBundle\Services\Weather
-      arguments: [%bytel_soap_weather_params%]
+      class: Bytel\SoapBundle\Services\CustomWs\Weather
+      arguments: [%bytel_soap_weather_params%, @event_dispatcher]

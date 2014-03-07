@@ -3,6 +3,7 @@
 namespace Bytel\SoapBundle\Services;
 
 use Zend\Soap\Client as ZendSoapClient;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
  * 
@@ -18,6 +19,8 @@ class Soap {
      */
     protected $soapClient;
     
+    protected $dispatcher;
+    
     
     /**
      * Constructor
@@ -25,8 +28,9 @@ class Soap {
      * @param  array $options
      * @return void
      */
-    public function __construct($options = null)
+    public function __construct($options = null, EventDispatcherInterface $dispatcher = null)
     {
+        $this->dispatcher = $dispatcher;
         Options::setOptions($this, $options);
     }
     
@@ -65,5 +69,10 @@ class Soap {
         }
     
         $this->soapClient = $soapClient;
+    }
+    
+    public function getEventDispatcher() 
+    {
+        return $this->dispatcher;
     }
 }
