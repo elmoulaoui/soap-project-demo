@@ -2,6 +2,8 @@
 namespace Bytel\SoapBundle\Services\Listener;
 
 use Bytel\SoapBundle\Services\Event\SoapEvent;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\ChainEncoder;
 
 /**
  * Maintains a list of requests and responses sent using a request or client

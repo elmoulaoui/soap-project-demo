@@ -27,6 +27,7 @@
 
 
 <div class="span6 well">
+    <h4> All soap calls</h4>
     <div id="monaccordeon">
         {% for index,call in collector.data %}
 	        {% include 'BytelSoapBundle:Collector:call.html.twig' with { 'call': call, 'index': index } %}
