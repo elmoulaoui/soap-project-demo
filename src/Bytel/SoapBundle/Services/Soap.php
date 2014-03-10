@@ -2,7 +2,7 @@
 
 namespace Bytel\SoapBundle\Services;
 
-use Bytel\SoapBundle\Services\SoapClient as ZendSoapClient;
+use Bytel\SoapBundle\Services\SoapClient as SoapClient;
 use Bytel\SoapBundle\Services\Event\SoapEvent;
 
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -17,7 +17,7 @@ class Soap {
     
     /**
      * SOAP client used to connect to service
-     * @var   ZendSoapClient
+     * @var   SoapClient
      */
     protected $soapClient;
     
@@ -39,11 +39,11 @@ class Soap {
     /**
      * Get SOAP client
      *
-     * @return ZendSoapClient
+     * @return SoapClient
      */
     public function getSoapClient()
     {
-        if (!$this->soapClient instanceof ZendSoapClient) {
+        if (!$this->soapClient instanceof SoapClient) {
             throw new SoapException('Cannot get soap client service', 0, $e);
         }
         return $this->soapClient;
@@ -61,12 +61,12 @@ class Soap {
             $wsdl = isset($options['wsdl']) ? $options['wsdl'] : null;
             $options = isset($options['options']) ? $options['options'] : array();
             
-            $soapClient = new ZendSoapClient($wsdl, $options);
+            $soapClient = new SoapClient($wsdl, $options);
             
             $soapClient->setOptions($options);
         }
     
-        if (!$soapClient instanceof ZendSoapClient) {
+        if (!$soapClient instanceof SoapClient) {
             throw new SoapException('Cannot set soap client service', 0, $e);
         }
     
