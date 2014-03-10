@@ -1,0 +1,23 @@
+
+<div class="accordion-group">
+        <div class="accordion-heading">
+            <a class="accordion-toggle" href="#item{{ index }}" data-parent="#monaccordeon" data-toggle="collapse">{{ call.method }}</a>
+        </div>
+        <div id="item{{ index }}" class="collapse">
+          <div class="accordion-inner">
+	          <ul class="nav nav-tabs">
+		        <li class="active"><a href="#request_{{ index }}" data-toggle="tab">REQUEST</a></li>
+		        <li><a href="#response_{{ index }}" data-toggle="tab">RESPONSE</a></li>
+		      </ul>
+		      
+		      <div class="tab-content">
+		        <div class="tab-pane active" id="request_{{ index }}">
+		           {% include 'BytelSoapBundle:Collector:request.html.twig' with {'index':index, 'request': call.request} %}
+		        </div>
+		        <div class="tab-pane" id="response_{{ index }}">
+		           {% include 'BytelSoapBundle:Collector:response.html.twig' with {'index':index, 'response':call.response} %}
+		        </div>
+		      </div>
+          </div>
+        </div>
+</div>

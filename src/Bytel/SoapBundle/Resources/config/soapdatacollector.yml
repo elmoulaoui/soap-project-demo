@@ -1,0 +1,16 @@
+parameters:
+
+services:
+    
+    soap_listener:
+        class: Bytel\SoapBundle\Services\Listener\SoapListener
+        public: true
+        tags:
+            - { name: kernel.event_listener, event: soap.call, method: onRequestSent }
+        
+
+    data_collector.soap:
+        class: Bytel\SoapBundle\Services\Collector\SoapCollector
+        arguments: ['@soap_listener']
+        tags:
+            - { name: data_collector, template: "BytelSoapBundle:Collector:soap.html.twig", id: "soap" }

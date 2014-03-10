@@ -1,0 +1,38 @@
+{% extends 'WebProfilerBundle:Profiler:layout.html.twig' %}
+
+{% block toolbar %}
+    {# le contenu de la barre d'outils de débuggage web #}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('bundles/bytelsoap/vendor/bootstrap-3.1.1/css/bootstrap.min.css') }}" />
+    
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="{{ asset('bundles/bytelsoap/vendor/bootstrap-3.1.1/js/bootstrap.min.js') }}"></script>
+    
+{% endblock %}
+
+{% block menu %}
+    <span class="label">
+        <span class="icon"><img src="{{ asset('/bundles/bytelsoap/images/XML-SOAP.jpg') }}" alt="" /></span>
+        <strong>SOAP</strong>
+        <span class="count">
+            <span>{{ collector.data|length }}</span>
+        </span>
+    </span>
+{% endblock %}
+
+{% block panel %}
+
+
+<div class="span6 well">
+    <h4> All soap calls</h4>
+    <div id="monaccordeon">
+        {% for index,call in collector.data %}
+	        {% include 'BytelSoapBundle:Collector:call.html.twig' with { 'call': call, 'index': index } %}
+	    {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

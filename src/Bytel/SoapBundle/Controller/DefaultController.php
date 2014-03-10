@@ -14,6 +14,8 @@ class DefaultController extends Controller
         
         $informations = $soapService->getWeatherInformation($params);
         
+        $informations = $soapService->getWeatherInformation($params);
+        
         return $this->render('BytelSoapBundle:Default:index.html.twig', array('informations' => $informations));
     }
 }

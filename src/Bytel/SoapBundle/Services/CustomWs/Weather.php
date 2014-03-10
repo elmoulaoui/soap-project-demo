@@ -8,11 +8,8 @@ class Weather extends Soap {
     
     public function getWeatherInformation($params = array()) {
         
-        try {
-            $response = $this->getSoapClient()->GetWeatherInformation($params);
-        } catch (\Exception $e) {
-            throw $e;
-        }
+        $response = $this->call('GetWeatherInformation', $params);
+        
         return $response->GetWeatherInformationResult->WeatherDescription;
     }
 
