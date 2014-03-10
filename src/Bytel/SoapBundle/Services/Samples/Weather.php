@@ -1,6 +1,6 @@
 <?php
 
-namespace Bytel\SoapBundle\Services\CustomWs;
+namespace Bytel\SoapBundle\Services\Samples;
 
 use Bytel\SoapBundle\Services\Soap;
 

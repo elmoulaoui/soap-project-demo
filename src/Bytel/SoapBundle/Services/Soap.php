@@ -30,9 +30,8 @@ class Soap {
      * @param  array $options
      * @return void
      */
-    public function __construct($options = null, EventDispatcherInterface $dispatcher = null)
+    public function __construct($options = null)
     {
-        $this->dispatcher = $dispatcher;
         Options::setOptions($this, $options);
     }
     
@@ -76,6 +75,11 @@ class Soap {
     public function getEventDispatcher() 
     {
         return $this->dispatcher;
+    }
+    
+    public function setEventDispatcher(EventDispatcherInterface $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
     }
     
     public function call($method, $params)

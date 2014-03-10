@@ -12,10 +12,17 @@ parameters:
 
 services:
 
+    bytel_soap:
+        class: Bytel\SoapBundle\Services\Soap
+        calls:
+            - [setEventDispatcher, ["@event_dispatcher"]]
+
     bytel_soap_amazon:
-      class: Bytel\SoapBundle\Services\CustomWs\Amazon
-      arguments: [%bytel_soap_amazon_params%, @event_dispatcher]
+      class: Bytel\SoapBundle\Services\Samples\Amazon
+      arguments: [%bytel_soap_amazon_params%]
+      parent: bytel_soap
 
     bytel_soap_weather:
-      class: Bytel\SoapBundle\Services\CustomWs\Weather
-      arguments: [%bytel_soap_weather_params%, @event_dispatcher]
+      class: Bytel\SoapBundle\Services\Samples\Weather
+      arguments: [%bytel_soap_weather_params%]
+      parent: bytel_soap
