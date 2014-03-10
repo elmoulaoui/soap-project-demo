@@ -2,7 +2,9 @@
 
 namespace Bytel\SoapBundle\Services;
 
-use Zend\Soap\Client as ZendSoapClient;
+use Bytel\SoapBundle\Services\SoapClient as ZendSoapClient;
+use Bytel\SoapBundle\Services\Event\SoapEvent;
+
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 /**
@@ -74,5 +76,20 @@ class Soap {
     public function getEventDispatcher() 
     {
         return $this->dispatcher;
+    }
+    
+    public function call($method, $params)
+    {
+        try {
+            $response = $this->getSoapClient()->$method($params);
+        
+            $event = new SoapEvent($this->getSoapClient()->getLastRequest(), $this->getSoapClient()->getLastResponse(), $this->getSoapClient()->getLastMethod());
+            $this->getEventDispatcher()->dispatch('soap.call', $event);
+        
+        } catch (\Exception $e) {
+            throw $e;
+        }
+        
+        return $response;
     }
 }
