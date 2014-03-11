@@ -19,6 +19,9 @@ class SoapListener
     {
         $this->add($event->getRequest(), $event->getResponse(), $event->getMethod());
     }
+    
+    
+
 
     /**
      * Add a request to the history
